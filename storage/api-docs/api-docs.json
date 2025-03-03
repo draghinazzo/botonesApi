@@ -1,0 +1,164 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Entregas",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/entregas": {
+            "get": {
+                "summary": "Lista todas las entregas",
+                "operationId": "370cd5e04b53833fef92c4c6cda0a82f",
+                "responses": {
+                    "200": {
+                        "description": "Lista de entregas"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear una nueva entrega",
+                "operationId": "c10f00ff8aeaf7865d061284613210f1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre_entrega",
+                                    "nombre_negocio",
+                                    "fecha",
+                                    "tipo_boton"
+                                ],
+                                "properties": {
+                                    "nombre_entrega": {
+                                        "type": "string"
+                                    },
+                                    "nombre_negocio": {
+                                        "type": "string"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "tipo_boton": {
+                                        "type": "string",
+                                        "enum": [
+                                            "wifi",
+                                            "ethernet"
+                                        ]
+                                    },
+                                    "observaciones": {
+                                        "type": "string"
+                                    },
+                                    "componentes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Entrega creada"
+                    }
+                }
+            }
+        },
+        "/api/entregas/{id}": {
+            "get": {
+                "summary": "Obtener una entrega por ID",
+                "operationId": "1eca0f5594b417b110e6fc58a3313b37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la entrega"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualizar una entrega",
+                "operationId": "2b7ed71ecfaa6b7dae04340c9dfcc2f4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombre_entrega": {
+                                        "type": "string"
+                                    },
+                                    "nombre_negocio": {
+                                        "type": "string"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "tipo_boton": {
+                                        "type": "string",
+                                        "enum": [
+                                            "wifi",
+                                            "ethernet"
+                                        ]
+                                    },
+                                    "observaciones": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Entrega actualizada"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Eliminar una entrega",
+                "operationId": "c2a3231b2671cc57d92f8622147243c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Entrega eliminada"
+                    }
+                }
+            }
+        }
+    }
+}
