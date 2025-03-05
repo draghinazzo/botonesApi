@@ -5,6 +5,135 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/componentes": {
+            "get": {
+                "summary": "Lista todos los componentes",
+                "operationId": "15639ece56895b533b1455f180efa545",
+                "responses": {
+                    "200": {
+                        "description": "Lista de componentes"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear un nuevo componente",
+                "operationId": "b76347cf9fca4c6ed2378541feded07d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "activo"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "descripcion": {
+                                        "type": "string"
+                                    },
+                                    "activo": {
+                                        "type": "boolean"
+                                    },
+                                    "imagen": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Componente creado"
+                    }
+                }
+            }
+        },
+        "/api/componentes/{id}": {
+            "get": {
+                "summary": "Obtener un componente por ID",
+                "operationId": "2fdbece002af2a1b5dccccefc185764b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles del componente"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualizar un componente",
+                "operationId": "08d34f5236c8b99daed491da8b45133b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "descripcion": {
+                                        "type": "string"
+                                    },
+                                    "activo": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Componente actualizado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Desactivar un componente",
+                "operationId": "20751ed318ec472eca3df038fa165714",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Componente desactivado"
+                    }
+                }
+            }
+        },
         "/api/entregas": {
             "get": {
                 "summary": "Lista todas las entregas",
